@@ -15,6 +15,7 @@ const TaskCreation = () => {
             endDate: "2023-09-12",
             startDate: "2023-09-08",
             priority: "medium",
+            status: 'pending',
             createdAt: new Date()
         }
     ];

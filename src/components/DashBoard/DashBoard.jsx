@@ -11,6 +11,7 @@ const DashBoard = () => {
                 <div className='dashboard-menu'>
                     <Link to='/dashboard'>Available Member</Link>
                     <Link to='/dashboard/all-task'>All Task</Link>
+                    <Link to='/dashboard/filter-task'>Filter Task</Link>
                 </div>
                 <div className='dashboard-outlet'>
                     <Outlet />

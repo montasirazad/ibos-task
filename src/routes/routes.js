@@ -8,6 +8,7 @@ import TaskCreation from "../components/TaskCreation/TaskCreation";
 import DashBoard from "../components/DashBoard/DashBoard";
 import AvailableUsers from "../components/AvailableUsers/AvailableUsers";
 import AllTask from "../components/AllTask/AllTask";
+import FilterTask from "../components/FilterTask/FilterTask";
 
 const router = createBrowserRouter([
     {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
         element: <Main />,
         children: [
             {
-                path: '/sign-up',
+                path: '/',
                 element: <SignUp />
             },
             {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/all-task',
                 element: <AllTask />
+            },
+            {
+                path: '/dashboard/filter-task',
+                element: <FilterTask />
             }
         ]
 

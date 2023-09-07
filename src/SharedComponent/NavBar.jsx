@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
         <div className='navbar' >
             <Link to={'/log-in'}>Log in</Link>
-            <Link to={'/sign-up'}>Sign Up</Link>
+            <Link to={'/'}>Sign Up</Link>
             <Link to={'/dashboard'}>Dashboard</Link>
             <Link to={'/task-creation'}>Add Task</Link>
             {loggedInUser && <button onClick={handleLogOut}>Log out</button>}

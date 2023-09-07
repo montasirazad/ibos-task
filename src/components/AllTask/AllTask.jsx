@@ -15,7 +15,7 @@ const AllTask = () => {
     return (
         <div>
             <div style={{ padding: '30px' }}>
-                <div style={{ overflow: 'hidden', overflowX: 'scroll'}}>
+                <div style={{ overflow: 'hidden', overflowX: 'scroll' }}>
                     <table >
 
                         <thead>
@@ -26,6 +26,8 @@ const AllTask = () => {
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Priority</th>
+                                <th>Status</th>
+                                <th>Option</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,6 +42,8 @@ const AllTask = () => {
                                         <td>{d.startDate}</td>
                                         <td>{d.endDate}</td>
                                         <td>{d.priority}</td>
+                                        <td>{d.status}</td>
+                                        <td><button>Edit</button></td>
 
                                     </tr>) :
                                     <tr>

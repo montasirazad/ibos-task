@@ -1,0 +1,14 @@
+.button-div button {
+    margin-top: 40px;
+    width: 120px;
+    height: 30px;
+    background-color: #101042;
+    color: white;
+    border: 1px solid white;
+}
+
+.button-div button:hover {
+    background-color: orangered;
+    color: black;
+    cursor: pointer;
+}
