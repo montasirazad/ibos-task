@@ -9,7 +9,8 @@ const DashBoard = () => {
             <NavBar />
             <div className='dashboard'>
                 <div className='dashboard-menu'>
-                    <Link to='/dashboard/available-user'>Available Member</Link>
+                    <Link to='/dashboard'>Available Member</Link>
+                    <Link to='/dashboard/all-task'>All Task</Link>
                 </div>
                 <div className='dashboard-outlet'>
                     <Outlet />

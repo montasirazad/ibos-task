@@ -5,12 +5,20 @@
 }
 
 .dashboard-menu {
+    display: flex;
+    flex-direction: column;
     background-color: #101042;
 }
 
 .dashboard-menu a {
-    /* margin-top: 35px; */
+    padding-top: 15px;
+    margin-bottom: 15px;
     color: white;
     text-decoration: none;
+    padding: 10px;
+
+}
+.dashboard-menu a:focus {
+    background-color: rgb(85, 56, 190);
 
 }

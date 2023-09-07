@@ -7,6 +7,7 @@ import MenuPage from "../components/MenuPage";
 import TaskCreation from "../components/TaskCreation/TaskCreation";
 import DashBoard from "../components/DashBoard/DashBoard";
 import AvailableUsers from "../components/AvailableUsers/AvailableUsers";
+import AllTask from "../components/AllTask/AllTask";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <AvailableUsers />
+            },
+            {
+                path: '/dashboard/all-task',
+                element: <AllTask />
             }
         ]
 

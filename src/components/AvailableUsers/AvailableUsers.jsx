@@ -12,7 +12,7 @@ const AvailableUsers = () => {
         }
     }, []);
     return (
-        <div style={{padding:'30px'}}>
+        <div style={{ padding: '30px' }}>
             <div style={{ overflow: 'hidden', overflowX: 'scroll', overflowY: 'scroll' }}>
                 <table >
 
@@ -26,8 +26,6 @@ const AvailableUsers = () => {
                     </thead>
                     <tbody>
                         {
-
-
                             data.length ?
                                 data.map(d => <tr key={d.email}>
                                     <td>{d.fullName}</td>
@@ -43,12 +41,7 @@ const AvailableUsers = () => {
                                     <td> </td>
                                     <td> </td>
                                     <td> </td>
-
-
-
                                 </tr>
-
-
                         }
                     </tbody>
                 </table>
