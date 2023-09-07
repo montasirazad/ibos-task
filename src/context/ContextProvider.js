@@ -16,6 +16,7 @@ const ContextProvider = ({ children }) => {
     });
     const [newData, setNewData] = useState([]);
     const [newToDo, setNewToDo] = useState({
+        id: '',
         title: '',
         description: '',
         startDate: '',

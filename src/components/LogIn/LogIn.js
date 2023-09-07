@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/ContextProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import iBosLogo from '../../image/ibos_logo.jpeg';
+import './LogIn.css';
 
 const LogIn = () => {
     const { setLoggedInUser } = useContext(AuthContext)
@@ -56,11 +58,12 @@ const LogIn = () => {
         e.preventDefault()
     };
     return (
-        <div>
+        <div className='log-in-div'>
+            <img src={iBosLogo} alt="" style={{width:'120px'}}/>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="email" onBlur={handleBlur} placeholder='Enter E-mail' /><br />
                 <input type="password" name="password" onBlur={handleBlur} placeholder='Enter password' /><br />
-                <input type="submit" name="" />
+                <button type="submit">Log In</button >
             </form>
 
             {

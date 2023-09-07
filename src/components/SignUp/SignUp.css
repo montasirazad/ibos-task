@@ -1,0 +1,21 @@
+.sign-up-div form input {
+    width: 25%;
+    height: 30px;
+    margin: 8px;
+}
+
+.sign-up-div form button {
+    width: 26%;
+    height: 35px;
+    background-color: #101042;
+    color: white;
+    border: none;
+    margin: 8px;
+
+}
+
+.sign-up-div input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/ContextProvider';
+import iBosLogo from '../../image/ibos_logo.jpeg';
+import './SignUp.css';
 
 const SignUp = () => {
     const { user, setUser, newData, setNewData, loggedInUser, setLoggedInUser } = useContext(AuthContext)
@@ -68,7 +70,8 @@ const SignUp = () => {
         e.preventDefault()
     };
     return (
-        <div>
+        <div className='sign-up-div'>
+            <img src={iBosLogo} alt="" style={{width:'120px'}}/>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="fullName" onBlur={handleBlur} placeholder='Your Full Name' /> <br />
                 <input type="text" name="userName" onBlur={handleBlur} placeholder='Enter a user name' /> <br />
@@ -77,8 +80,9 @@ const SignUp = () => {
                 <input type="password" name="password" onBlur={handleBlur} placeholder='password' /><br />
                 {/* <input type="text" name="bio" onBlur={handleBlur} placeholder='Your position' /><br /> */}
                 {/* <input type="file" name="img" id="" onChange={handleChange} /> */}
-                <button type='submit'>submit</button>
+                <button type='submit'>Sign Up</button>
             </form>
+            <Link to={'/log-in'}>Already Signed up? Click to Log In</Link>
         </div>
     );
 };
