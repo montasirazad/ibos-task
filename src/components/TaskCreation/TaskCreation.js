@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/ContextProvider';
+import './TaskCreation.css';
+
 
 const TaskCreation = () => {
     const { newToDo, setNewToDo } = useContext(AuthContext);
@@ -7,12 +9,13 @@ const TaskCreation = () => {
 
     const fakeData = [
         {
+            id: "test_data_9/8/2023",
+            title: "Test data ",
             description: "Test data",
             endDate: "2023-09-12",
-            id: "test_data_9/8/2023",
-            priority: "medium",
             startDate: "2023-09-08",
-            title: "Test data "
+            priority: "medium",
+            createdAt: new Date()
         }
     ];
     useEffect(() => {
@@ -79,7 +82,7 @@ const TaskCreation = () => {
         e.preventDefault()
     }
     return (
-        <div>
+        <div className='task-div'>
             <form onSubmit={handleSubmit}>
                 <input type="text" onBlur={handleBlur} name="title" id="" placeholder='title' /><br /> <br />
                 <textarea type="text" onBlur={handleBlur} name="description" id="" placeholder='description' /><br />

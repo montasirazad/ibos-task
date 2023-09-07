@@ -21,7 +21,8 @@ const ContextProvider = ({ children }) => {
         description: '',
         startDate: '',
         endDate: '',
-        priority: 'low'
+        priority: 'low',
+        createdAt: new Date()
     });
 
 

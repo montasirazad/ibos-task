@@ -5,6 +5,8 @@ import Main from "../components/Main/Main";
 import SignUp from "../components/SignUp/SignUp";
 import MenuPage from "../components/MenuPage";
 import TaskCreation from "../components/TaskCreation/TaskCreation";
+import DashBoard from "../components/DashBoard/DashBoard";
+import AvailableUsers from "../components/AvailableUsers/AvailableUsers";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,18 @@ const router = createBrowserRouter([
                 element: <TaskCreation />
             }
         ]
+
+    },
+    {
+        path: '/dashboard',
+        element: <DashBoard />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <AvailableUsers />
+            }
+        ]
+
 
     }
 ]);
