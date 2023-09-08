@@ -13,6 +13,7 @@
 
 export const userFakeData = [
     {
+        id: '001',
         fullName: 'User_one',
         userName: 'user1',
         password: '1234',
@@ -30,7 +31,7 @@ export const todoFakeData = [
         endDate: "2023-09-12",
         startDate: "2023-09-08",
         priority: "medium",
-        status: 'pending',
+        status: 'In Progress',
         teamMember: ['user_2', 'user_3', 'user_4'],
         createdAt: new Date()
     }

@@ -1,19 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './AllTask.css';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/ContextProvider';
+import './AllTask.css';
 
 const AllTask = () => {
     const { oldTodo } = useContext(AuthContext)
     const [data, setData] = useState([]);
 
+console.log(oldTodo);
     useEffect(() => {
-        setData(oldTodo)
-        // try {
-        //     const savedData = JSON.parse(localStorage.getItem('new-toDo'));
-        //     setData(savedData)
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        //setData(oldTodo)
     }, []);
     return (
         <div>
@@ -38,8 +34,8 @@ const AllTask = () => {
                             {
 
 
-                                data?.length ?
-                                    data.map(d => <tr key={d.userName}>
+                                oldTodo?.length ?
+                                    oldTodo.map(d => <tr key={d.id}>
                                         <td>{d.title}</td>
                                         <td style={{ fontSize: 'small' }}>{new Date(`${d.createdAt}`).toLocaleString('en-us', { dateStyle: 'medium', hour12: true, timeStyle: 'short' })}</td>
                                         <td>{d.description}</td>
@@ -48,7 +44,7 @@ const AllTask = () => {
                                         <td>{d.endDate}</td>
                                         <td>{d.priority}</td>
                                         <td>{d.status}</td>
-                                        <td><button>Edit</button></td>
+                                        <td><Link to={`/dashboard/edit-task`}><button>Edit</button></Link></td>
 
                                     </tr>) :
                                     <tr>

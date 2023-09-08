@@ -9,6 +9,7 @@ import DashBoard from "../components/DashBoard/DashBoard";
 import AvailableUsers from "../components/AvailableUsers/AvailableUsers";
 import AllTask from "../components/AllTask/AllTask";
 import FilterTask from "../components/FilterTask/FilterTask";
+import EditTask from "../components/EditTask/EditTask";
 
 const router = createBrowserRouter([
     {
@@ -31,14 +32,18 @@ const router = createBrowserRouter([
             },
             {
                 path: '/task-creation',
-                element: <TaskCreation />
+                element: <PrivateRoute>
+                    <TaskCreation />
+                </PrivateRoute>
             }
         ]
 
     },
     {
         path: '/dashboard',
-        element: <DashBoard />,
+        element: <PrivateRoute>
+            <DashBoard />
+        </PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
@@ -51,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/filter-task',
                 element: <FilterTask />
+            },
+            {
+                path: '/dashboard/edit-task',
+                element: <EditTask />
             }
         ]
 

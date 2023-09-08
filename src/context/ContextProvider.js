@@ -10,6 +10,7 @@ const ContextProvider = ({ children }) => {
     const [loggedInUser, setLoggedInUser] = useState(false)
 
     const [user, setUser] = useState({
+        id: `user-id_${Date.now()}_${new Date().toLocaleDateString()}`,
         userName: '',
         fullName: '',
         password: '',
@@ -26,12 +27,14 @@ const ContextProvider = ({ children }) => {
         endDate: '',
         priority: 'low',
         teamMember: [],
+        status: 'In Progress',
         createdAt: new Date()
     });
-    const [newData, setNewData] = useState([]);
-    const [data, setData] = useState([]);
-    const [oldTodo, setOldTodo] = useState([]);
+    const [newData, setNewData] = useState([]); // contains user data
+    const [oldTodo, setOldTodo] = useState([]); // contains to do data
+    // const [data, setData] = useState([]);
 
+    // Loading To Do data
     useEffect(() => {
         try {
             const savedData = JSON.parse(window.localStorage?.getItem('new-toDo'));
@@ -46,6 +49,7 @@ const ContextProvider = ({ children }) => {
 
     }, []);
 
+    // Loading User data
     useEffect(() => {
         try {
             const savedData = JSON.parse(window.localStorage?.getItem('user-data'));
@@ -80,9 +84,10 @@ const ContextProvider = ({ children }) => {
         loggedInUser,
         setLoggedInUser,
         handleLogOut,
-        data, setData,
-        oldTodo, setOldTodo,
-        newToDo, setNewToDo
+        oldTodo,
+        setOldTodo,
+        newToDo,
+        setNewToDo
     };
     return (
         <AuthContext.Provider value={authInfo}>
