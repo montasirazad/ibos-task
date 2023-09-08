@@ -23,6 +23,7 @@ const AllTask = () => {
                                 <th>Title</th>
                                 <th>Created At</th>
                                 <th>Description</th>
+                                <th>Team Member</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Priority</th>
@@ -34,11 +35,12 @@ const AllTask = () => {
                             {
 
 
-                                data.length ?
+                                data?.length ?
                                     data.map(d => <tr key={d.email}>
                                         <td>{d.title}</td>
                                         <td style={{ fontSize: 'small' }}>{new Date(`${d.createdAt}`).toLocaleString('en-us', { dateStyle: 'medium', hour12: true, timeStyle: 'short' })}</td>
                                         <td>{d.description}</td>
+                                        <td>{d.teamMember.toString()}</td>
                                         <td>{d.startDate}</td>
                                         <td>{d.endDate}</td>
                                         <td>{d.priority}</td>

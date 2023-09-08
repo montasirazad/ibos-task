@@ -15,15 +15,7 @@ const ContextProvider = ({ children }) => {
         // bio: ''
     });
     const [newData, setNewData] = useState([]);
-    const [newToDo, setNewToDo] = useState({
-        id: '',
-        title: '',
-        description: '',
-        startDate: '',
-        endDate: '',
-        priority: 'low',
-        createdAt: new Date()
-    });
+    
 
 
     const fakeData = [
@@ -63,8 +55,7 @@ const ContextProvider = ({ children }) => {
         loggedInUser,
         setLoggedInUser,
         handleLogOut,
-        newToDo,
-        setNewToDo
+         
     };
     return (
         <AuthContext.Provider value={authInfo}>

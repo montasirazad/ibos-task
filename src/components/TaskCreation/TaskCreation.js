@@ -4,8 +4,19 @@ import './TaskCreation.css';
 
 
 const TaskCreation = () => {
-    const { newToDo, setNewToDo } = useContext(AuthContext);
+    // const { newToDo, setNewToDo } = useContext(AuthContext);
     const [oldTodo, setOldTodo] = useState([]);
+    const [data, setData] = useState([]);
+    const [newToDo, setNewToDo] = useState({
+        id: '',
+        title: '',
+        description: '',
+        startDate: '',
+        endDate: '',
+        priority: 'low',
+        teamMember: [],
+        createdAt: new Date()
+    });
 
     const fakeData = [
         {
@@ -16,6 +27,7 @@ const TaskCreation = () => {
             startDate: "2023-09-08",
             priority: "medium",
             status: 'pending',
+            teamMember: ['user_2', 'user_3', 'user_4'],
             createdAt: new Date()
         }
     ];
@@ -32,6 +44,18 @@ const TaskCreation = () => {
         }
 
     }, []);
+
+    useEffect(() => {
+        try {
+            const savedData = JSON.parse(localStorage.getItem('user-data'));
+            setData(savedData)
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+
+
     const handleBlur = (e) => {
         const fieldName = e.target.name;
         const fieldValue = e.target.value;
@@ -71,6 +95,17 @@ const TaskCreation = () => {
         }
         e.preventDefault()
     };
+    const checkHandler = (e) => {
+        const fieldName = e.target.name;
+        const value = e.target.value;
+        const checkValue = e.target.checked;
+        if (fieldName === 'teamMember' && checkValue) {
+            const newState = { ...newToDo }
+            newState.teamMember = [...newToDo.teamMember, value];
+            setNewToDo(newState)
+        }
+        console.log(newToDo);
+    }
     const handleSubmit = (e) => {
         const newId = newToDo.title + '_' + new Date().toLocaleDateString();
         const updatedState = { ...newToDo };
@@ -85,26 +120,42 @@ const TaskCreation = () => {
     return (
         <div className='task-div'>
             <form onSubmit={handleSubmit}>
-                <input type="text" onBlur={handleBlur} name="title" id="" placeholder='title' /><br /> <br />
-                <textarea type="text" onBlur={handleBlur} name="description" id="" placeholder='description' /><br />
-                <p>Start Date</p>
-                <input type="date" onBlur={handleChange} name="startDate" id="" /> <br />
-                <p>End Date</p>
-                <input type="date" onBlur={handleChange} name="endDate" id="" /> <br />
-                <label htmlFor="">Task Priority</label><br />
 
-                <select onChange={handleChange} name="priority" id="">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                </select> <br />
-                <button type='submit'>Add Task</button>
-                {/* <select name="" id="">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                </select> */}
+                <div className="data-div">
+                    <input type="text" onBlur={handleBlur} name="title" id="" placeholder='title' /><br /> <br />
+                    <textarea type="text" onBlur={handleBlur} name="description" id="" placeholder='description' /><br />
+                    <p>Start Date</p>
+                    <input type="date" onBlur={handleChange} name="startDate" id="" /> <br />
+                    <p>End Date</p>
+                    <input type="date" onBlur={handleChange} name="endDate" id="" /> <br />
+                    <label htmlFor="">Task Priority</label><br />
+
+                    <select onChange={handleChange} name="priority" id="">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+
                 <br />
+
+                <p>Add member to Your Team</p>
+
+                {
+                    data.map(d => <div className='checkmark' key={d.userName}>
+                        <label>
+                            <input name='teamMember'
+                                type="checkbox"
+                                value={d.userName}
+                                onChange={checkHandler}
+                            />
+                            {d.userName}
+                        </label>
+                    </div>)
+                }
+                <br />
+                <button type='submit'>Add Task</button>
             </form>
         </div>
     );

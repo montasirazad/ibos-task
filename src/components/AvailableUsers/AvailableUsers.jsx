@@ -3,6 +3,7 @@ import './AvailableUsers.css';
 
 const AvailableUsers = () => {
     const [data, setData] = useState([]);
+    
     useEffect(() => {
         try {
             const savedData = JSON.parse(localStorage.getItem('user-data'));

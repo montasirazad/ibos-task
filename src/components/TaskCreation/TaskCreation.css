@@ -1,12 +1,15 @@
-.task-div form input {
+.data-div input {
+    margin-top: 8px;
     width: 25%;
     height: 30px;
-    margin: 8px;
+    margin-bottom: 8px;
 }
-.task-div form textarea{
+
+.data-div textarea {
     width: 25%;
     height: 80px;
 }
+
 .task-div form button {
     width: 26%;
     height: 35px;
@@ -21,4 +24,12 @@
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
+}
+
+.checkmark {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
