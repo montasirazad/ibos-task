@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './AllTask.css';
+import { AuthContext } from '../../context/ContextProvider';
 
 const AllTask = () => {
+    const { oldTodo } = useContext(AuthContext)
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        try {
-            const savedData = JSON.parse(localStorage.getItem('new-toDo'));
-            setData(savedData)
-        } catch (error) {
-            console.log(error);
-        }
+        setData(oldTodo)
+        // try {
+        //     const savedData = JSON.parse(localStorage.getItem('new-toDo'));
+        //     setData(savedData)
+        // } catch (error) {
+        //     console.log(error);
+        // }
     }, []);
     return (
         <div>
@@ -36,7 +39,7 @@ const AllTask = () => {
 
 
                                 data?.length ?
-                                    data.map(d => <tr key={d.email}>
+                                    data.map(d => <tr key={d.userName}>
                                         <td>{d.title}</td>
                                         <td style={{ fontSize: 'small' }}>{new Date(`${d.createdAt}`).toLocaleString('en-us', { dateStyle: 'medium', hour12: true, timeStyle: 'short' })}</td>
                                         <td>{d.description}</td>

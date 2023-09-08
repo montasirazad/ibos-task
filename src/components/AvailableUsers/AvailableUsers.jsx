@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './AvailableUsers.css';
+import { AuthContext } from '../../context/ContextProvider';
 
 const AvailableUsers = () => {
+    const { newData } = useContext(AuthContext)
     const [data, setData] = useState([]);
-    
+
     useEffect(() => {
         try {
             const savedData = JSON.parse(localStorage.getItem('user-data'));
@@ -14,12 +16,12 @@ const AvailableUsers = () => {
     }, []);
     return (
         <div style={{ padding: '30px' }}>
-            <div style={{ overflow: 'hidden', overflowX: 'scroll', overflowY: 'scroll' }}>
+            <div style={{ overflow: 'hidden', overflowX: 'scroll' }}>
                 <table >
 
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Full Name</th>
                             <th>User Name</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -27,8 +29,8 @@ const AvailableUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            data.length ?
-                                data.map(d => <tr key={d.email}>
+                            newData.length ?
+                                newData.map(d => <tr key={d.email}>
                                     <td>{d.fullName}</td>
                                     <td>{d.userName}</td>
                                     <td>{d.email}</td>

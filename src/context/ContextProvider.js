@@ -1,7 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { todoFakeData, userFakeData } from '../utilities';
 
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
+
+
 const ContextProvider = ({ children }) => {
 
     const [loggedInUser, setLoggedInUser] = useState(false)
@@ -14,26 +17,40 @@ const ContextProvider = ({ children }) => {
         email: '',
         // bio: ''
     });
+    const [newToDo, setNewToDo] = useState({
+
+        id: `task-id_${Date.now()}_${new Date().toLocaleDateString()}`,
+        title: '',
+        description: '',
+        startDate: '',
+        endDate: '',
+        priority: 'low',
+        teamMember: [],
+        createdAt: new Date()
+    });
     const [newData, setNewData] = useState([]);
-    
+    const [data, setData] = useState([]);
+    const [oldTodo, setOldTodo] = useState([]);
 
-
-    const fakeData = [
-        {
-            userName: 'user1',
-            password: '1234',
-            phone: '011111111',
-            email: 'user1@gmail.com',
-            bio: 'something'
+    useEffect(() => {
+        try {
+            const savedData = JSON.parse(window.localStorage?.getItem('new-toDo'));
+            if (!savedData) {
+                const storageData = window.localStorage.setItem('new-toDo', JSON.stringify(todoFakeData))
+                setOldTodo(JSON.parse(storageData))
+            }
+            setOldTodo(savedData)
+        } catch (error) {
+            console.log(error);
         }
-    ];
 
+    }, []);
 
     useEffect(() => {
         try {
             const savedData = JSON.parse(window.localStorage?.getItem('user-data'));
             if (!savedData) {
-                const storageData = window.localStorage.setItem('user-data', JSON.stringify(fakeData))
+                const storageData = window.localStorage.setItem('user-data', JSON.stringify(userFakeData))
                 setNewData(JSON.parse(storageData))
             }
             setNewData(savedData)
@@ -42,6 +59,14 @@ const ContextProvider = ({ children }) => {
         }
 
     }, []);
+    // useEffect(() => {
+    //     try {
+    //         const savedData = JSON.parse(localStorage.getItem('user-data'));
+    //         setData(savedData)
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }, []);
 
     const handleLogOut = () => {
         setLoggedInUser(false)
@@ -55,7 +80,9 @@ const ContextProvider = ({ children }) => {
         loggedInUser,
         setLoggedInUser,
         handleLogOut,
-         
+        data, setData,
+        oldTodo, setOldTodo,
+        newToDo, setNewToDo
     };
     return (
         <AuthContext.Provider value={authInfo}>
