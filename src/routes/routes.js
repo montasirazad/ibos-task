@@ -23,12 +23,6 @@ const router = createBrowserRouter([
             {
                 path: '/log-in',
                 element: <LogIn />
-            }, {
-                path: '/menu',
-                element:
-                    <MenuPage />
-                // <PrivateRoute>
-                // </PrivateRoute>
             },
             {
                 path: '/task-creation',
