@@ -10,3 +10,18 @@
     text-decoration: none;
     color: wheat;
 }
+
+button {
+    width: 80px;
+    height: 30px;
+    background-color: teal;
+    color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: red;
+    transition: 300ms;
+    cursor: pointer;
+}

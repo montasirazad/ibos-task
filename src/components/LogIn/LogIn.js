@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/ContextProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import iBosLogo from '../../image/ibos_logo.jpeg';
 import './LogIn.css';
 
@@ -59,16 +59,15 @@ const LogIn = () => {
     };
     return (
         <div className='log-in-div'>
-            <img src={iBosLogo} alt="" style={{width:'120px'}}/>
+            <img src={iBosLogo} alt="" style={{ width: '120px' }} />
+            <h3 style={{color:'slateblue'}}>Please Log in to continue</h3>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="email" onBlur={handleBlur} placeholder='Enter E-mail' /><br />
                 <input type="password" name="password" onBlur={handleBlur} placeholder='Enter password' /><br />
                 <button type="submit">Log In</button >
             </form>
+            <Link to={'/'}>Don't have account? Click to Sign up..!</Link>
 
-            {/* {
-                data?.map(d => <p key={d.userName}>{d.userName}</p>)
-            } */}
         </div>
     );
 };

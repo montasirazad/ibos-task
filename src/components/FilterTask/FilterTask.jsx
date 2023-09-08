@@ -40,10 +40,16 @@ const FilterTask = () => {
                 <button onClick={handleHigh}>High</button>
 
 
-                <h1>Total Task Found : {filteredToDo.length}</h1>
+                <h1>Task Found : {filteredToDo.length}</h1>
                 {filteredToDo.length ?
                     filteredToDo.map((info) => <div key={info.title}>
-                        <h1>here:{info.description}</h1>
+                        <p>Id: {info.id}</p>
+                        <p>Created At:{new Date(`${info.createdAt}`).toLocaleString('en-us', { dateStyle: 'medium', hour12: true, timeStyle: 'short' })}</p>
+                        <p>Title:{info.title}</p>
+                        <p>Start Date:{info.startDate}</p>
+                        <p>End Date:{info.endDate}</p>
+                        <p>Status:{info.status}</p>
+                        <p>Priority:{info.priority.toUpperCase()}</p>
                     </div>) : <p>No data</p>
                 }
             </div>

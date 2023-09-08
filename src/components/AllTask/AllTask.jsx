@@ -7,10 +7,19 @@ const AllTask = () => {
     const { oldTodo } = useContext(AuthContext)
     const [data, setData] = useState([]);
 
-console.log(oldTodo);
+    console.log(oldTodo);
     useEffect(() => {
         //setData(oldTodo)
     }, []);
+
+    const handleChange = (e, id) => {
+        // const fieldName = e.target.name;
+        // const fieldValue = e.target.value;
+        console.log(id);
+
+    }
+
+
     return (
         <div>
             <div style={{ padding: '30px' }}>
@@ -27,7 +36,7 @@ console.log(oldTodo);
                                 <th>End Date</th>
                                 <th>Priority</th>
                                 <th>Status</th>
-                                <th>Option</th>
+                                {/* <th>Option</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -42,9 +51,20 @@ console.log(oldTodo);
                                         <td>{d.teamMember.toString()}</td>
                                         <td>{d.startDate}</td>
                                         <td>{d.endDate}</td>
-                                        <td>{d.priority}</td>
-                                        <td>{d.status}</td>
-                                        <td><Link to={`/dashboard/edit-task`}><button>Edit</button></Link></td>
+                                        <td>
+                                            <select onChange={() => handleChange(d.title)}>
+                                                <option value="low">Low</option>
+                                                <option value="medium">Medium</option>
+                                                <option value="high">High</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select value={d.status}   id="">
+                                                <option value="inProgress">In Progress</option>
+                                                <option value="complete">Complete</option>
+                                            </select>
+                                        </td>
+                                        {/* <td><Link to={`/dashboard/edit-task`}><button>Edit</button></Link></td> */}
 
                                     </tr>) :
                                     <tr>

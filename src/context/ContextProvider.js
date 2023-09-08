@@ -15,11 +15,9 @@ const ContextProvider = ({ children }) => {
         fullName: '',
         password: '',
         phone: '',
-        email: '',
-        // bio: ''
+        email: ''
     });
     const [newToDo, setNewToDo] = useState({
-
         id: `task-id_${Date.now()}_${new Date().toLocaleDateString()}`,
         title: '',
         description: '',
@@ -63,14 +61,7 @@ const ContextProvider = ({ children }) => {
         }
 
     }, []);
-    // useEffect(() => {
-    //     try {
-    //         const savedData = JSON.parse(localStorage.getItem('user-data'));
-    //         setData(savedData)
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }, []);
+    
 
     const handleLogOut = () => {
         setLoggedInUser(false)

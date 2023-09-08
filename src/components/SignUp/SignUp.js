@@ -62,16 +62,15 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         localStorage.setItem('user-data', JSON.stringify([...newData, user]))
-
-        // alert('User created successfully')
-        // navigate('/log-in')
+        alert('User created successfully')
+        navigate('/log-in')
         // e.target.reset()
-        console.log(user);
+        //console.log(user);
         e.preventDefault()
     };
     return (
         <div className='sign-up-div'>
-            <img src={iBosLogo} alt="" style={{width:'120px'}}/>
+            <img src={iBosLogo} alt="" style={{ width: '120px' }} />
             <form onSubmit={handleSubmit}>
                 <input type="text" name="fullName" onBlur={handleBlur} placeholder='Your Full Name' /> <br />
                 <input type="text" name="userName" onBlur={handleBlur} placeholder='Enter a user name' /> <br />
