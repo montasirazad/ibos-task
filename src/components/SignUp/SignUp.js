@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/ContextProvider';
 import iBosLogo from '../../image/ibos_logo.jpeg';
 import './SignUp.css';
 
 const SignUp = () => {
-    const { user, setUser, newData, setNewData, loggedInUser, setLoggedInUser } = useContext(AuthContext)
+    const { user, setUser, newData} = useContext(AuthContext)
 
     const navigate = useNavigate();
 
